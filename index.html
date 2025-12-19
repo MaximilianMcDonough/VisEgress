@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisEgress — Client-Side Egress Visibility</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1224;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --accent: #7ce7d7;
+      --muted: #cfd7e6;
+      --text: #f4f7ff;
+      --border: rgba(255,255,255,0.12);
+      --radius: 14px;
+      --shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(124,231,215,0.08), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(127,178,255,0.08), transparent 35%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px 18px 64px;
+    }
+    h1, h2, h3 { font-family: 'Newsreader', 'Space Grotesk', serif; letter-spacing: -0.02em; margin: 0 0 12px; }
+    h1 { font-size: clamp(3.2rem, 6vw, 4.6rem); line-height: 1.05; }
+    h2 { font-size: clamp(1.5rem, 2.2vw, 2.0rem); }
+    p { margin: 0 0 14px; color: var(--muted); }
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+    .hero { padding: 24px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(124,231,215,0.12), rgba(127,178,255,0.16)); box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .section { padding: 18px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--panel-strong); box-shadow: var(--shadow); }
+    .list { list-style: disc; padding-left: 22px; margin: 0 0 8px; color: var(--muted); }
+    a { color: var(--accent); }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+    .table th,
+    .table td {
+      padding: 6px 4px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .tagline { color: var(--text); font-size: 1.05rem; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>VisEgress</h1>
+      <p style="font-size: 1.15rem; color: var(--text);">Client-side egress visibility for modern web applications</p>
+      <p>VisEgress shows where browser data actually goes.</p>
+      <p>We observe real user workflows in the browser to reveal APIs, third-party data paths, and direct-to-cloud access that backend-only monitoring often misses.</p>
+    </header>
+
+    <section class="section">
+      <h2>What VisEgress Does</h2>
+      <ul class="list">
+        <li>Observes browser network traffic and user interactions</li>
+        <li>Reconstructs real client-side workflows</li>
+        <li>Maps endpoints, data paths, and destinations</li>
+        <li>Identifies visibility boundaries between the browser, backend, and third parties</li>
+        <li>Explains findings in clear, security-focused reports</li>
+      </ul>
+      <p>VisEgress focuses on visibility and explanation, not exploitation or blocking.</p>
+    </section>
+
+    <section class="section">
+      <h2>Why This Matters</h2>
+      <p>Backend monitoring and API gateways only see what passes through them.</p>
+      <p>Modern web applications increasingly send data directly from the browser to third parties, cloud storage, and auxiliary services.</p>
+      <p>These paths are often:
+undocumented
+invisible to backend logs
+outside gateway enforcement
+difficult to reason about from code or specs alone</p>
+      <p>VisEgress makes these data paths explicit.</p>
+    </section>
+
+    <section class="section">
+      <h2>What VisEgress Is (and Is Not)</h2>
+      <p><strong>VisEgress is:</strong></p>
+      <ul class="list">
+        <li>Read-only client-side observation</li>
+        <li>Architecture and visibility analysis</li>
+        <li>Workflow-level understanding of browser behavior</li>
+      </ul>
+      <p><strong>VisEgress is not:</strong></p>
+      <ul class="list">
+        <li>A vulnerability scanner</li>
+        <li>A DAST tool</li>
+        <li>An exploitation framework</li>
+        <li>A blocking or enforcement product</li>
+      </ul>
+      <p>We show what exists, not how to break it.</p>
+    </section>
+
+    <section class="section">
+      <h2>Example Findings</h2>
+      <ul class="list">
+        <li>Direct browser uploads to cloud storage (e.g., S3) and where enforcement shifts</li>
+        <li>Third-party analytics and telemetry destinations</li>
+        <li>Undocumented or inventory-missing client-side APIs</li>
+        <li>Browser egress paths that bypass backend-only visibility</li>
+      </ul>
+      <p>All findings distinguish expected design patterns from items requiring review.</p>
+    </section>
+
+    <section class="section">
+      <h2>How It Works</h2>
+      <ul class="list">
+        <li>Client-side traffic capture (browser instrumentation / automation)</li>
+        <li>Deterministic classification of destinations and control paths</li>
+        <li>Workflow clustering based on observed behavior</li>
+        <li>Structured reporting with explicit limitations and confidence</li>
+        <li>No active probing. No payload manipulation. No bypass attempts.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Who It’s For</h2>
+      <ul class="list">
+        <li>Application Security teams</li>
+        <li>Platform and Infrastructure teams</li>
+        <li>Security architects</li>
+        <li>Engineering teams responsible for data governance and visibility</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Current Status</h2>
+      <p>VisEgress is in early pilot.</p>
+      <p>We’re working with a small number of teams to validate:
+coverage
+report clarity
+integration into existing security workflows</p>
+    </section>
+
+    <section class="section">
+      <h2>Example Report</h2>
+      <p class="tagline">Concise view with destinations and redirects redacted, mirroring the Markdown report structure.</p>
+
+      <h3>Scope</h3>
+      <ul class="list">
+        <li>Type: unknown</li>
+        <li>Host: [REDACTED]</li>
+        <li>Authorized: True</li>
+      </ul>
+
+      <h3>Executive Summary</h3>
+      <p>Tested scope [REDACTED] with 494 observed events, 23 endpoint(s), and 23 workflow(s); observed destinations include expected_third_party=9, unknown=38, direct_to_cloud=0, unlisted_first_party=0, control_review=0. These data paths represent visibility boundaries for backend-only monitoring and should be reviewed/allowlisted.</p>
+
+      <h3>Client-Side Visibility Summary</h3>
+      <table class="table">
+        <thead>
+          <tr><th>Dimension</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Observed endpoints</td><td>23 observed</td></tr>
+          <tr><td>Observed destinations</td><td>53 observed</td></tr>
+          <tr><td>Expected third-party integrations</td><td>[REDACTED]</td></tr>
+          <tr><td>Unknown destinations</td><td>[REDACTED] (+ more)</td></tr>
+          <tr><td>Visibility boundary</td><td>Present (browser-originated egress may bypass backend-only monitoring)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Coverage</h3>
+      <ul class="list">
+        <li>Target: [REDACTED]</li>
+        <li>Total events: 494</li>
+        <li>Unique endpoints: 23</li>
+        <li>Workflows: 23 (offpath: 20)</li>
+        <li>Data flows: destinations and third-party egress present (all destinations redacted)</li>
+      </ul>
+
+      <h3>Observed Client-Side Data Paths (redacted)</h3>
+      <p style="color: var(--muted);">Top destinations with classes; hostnames and redirect locations marked [REDACTED]. Redirect chains captured; endpoints reflect final URLs.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Destination</th>
+            <th>Class</th>
+            <th>Expectedness</th>
+            <th>Control</th>
+            <th>Risk</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>[REDACTED]</td><td>FIRST_PARTY_CDN</td><td>expected</td><td>GATEWAY_PATH</td><td>EXPECTED_PATTERN</td><td>180</td></tr>
+          <tr><td>[REDACTED]</td><td>UNCLASSIFIED_EXTERNAL</td><td>unknown</td><td>BROWSER_EGRESS</td><td>INVENTORY_GAP</td><td>32</td></tr>
+          <tr><td>[REDACTED]</td><td>FIRST_PARTY_API</td><td>expected</td><td>GATEWAY_PATH</td><td>EXPECTED_PATTERN</td><td>30</td></tr>
+          <tr><td>[REDACTED]</td><td>THIRD_PARTY_ANALYTICS</td><td>expected</td><td>BROWSER_EGRESS</td><td>EXPECTED_PATTERN</td><td>22</td></tr>
+          <tr><td>[REDACTED]</td><td>INLINE_DATA</td><td>expected</td><td>CLIENT_ONLY</td><td>EXPECTED_PATTERN</td><td>22</td></tr>
+          <tr><td>[REDACTED]</td><td>UNCLASSIFIED_EXTERNAL</td><td>unknown</td><td>BROWSER_EGRESS</td><td>INVENTORY_GAP</td><td>20</td></tr>
+          <tr><td>[REDACTED]</td><td>UNCLASSIFIED_EXTERNAL</td><td>unknown</td><td>BROWSER_EGRESS</td><td>INVENTORY_GAP</td><td>19</td></tr>
+        </tbody>
+      </table>
+      <p style="color: var(--muted);">31 additional destinations omitted for brevity; all hostnames/redirects redacted.</p>
+
+      <h3>Findings (redacted, concise)</h3>
+      <ul class="list">
+        <li>Expected third-party integrations observed; visibility boundary noted (hosts redacted).</li>
+        <li>Browser-originated egress present; off-path from gateway (destinations redacted).</li>
+        <li>Unknown destinations require review/allowlisting (names redacted).</li>
+        <li>No auth headers seen; capture may be unauthenticated; re-capture with login recommended.</li>
+        <li>No 429s seen; rate limiting not assessed from passive capture.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Contact</h2>
+      <p>Interested in a pilot or discussion?</p>
+      <p>Email: <a href="mailto:mcdonoughsoftwear@gmail.com">mcdonoughsoftwear@gmail.com</a></p>
+      <p>Founder: Maximilian McDonough</p>
+    </section>
+  </main>
+</body>
+</html>
